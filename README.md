@@ -14,7 +14,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 ## Installing
 
-```docker compose up -d```
+```docker compose -p tiago-forecast up -d```
 
 ## Configuring
 
