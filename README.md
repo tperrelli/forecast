@@ -20,6 +20,10 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 ```docker exec tiago-forecast-app composer install && php artisan migrate --seed```
 
+
+## Running all test suite
+```docker exec tiago-forecast-app ./vendor/bin/phpunit```
+
 ### Premium Partners
 
 - **[Vehikl](https://vehikl.com/)**
