@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  database:
+    image: mysql:8.0.33
+    command:
+      - "--default-authentication-plugin=mysql_native_password"
+    container_name: "${COMPOSE_PROJECT_NAME}-db"
+    ports:
+      - 33060:3306
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - .dbdata:/var/lib/mysql
+  app:
+    image: ambientum/php:8.1-nginx
+    container_name: "${COMPOSE_PROJECT_NAME}-app"
+    volumes:
+      - .:/var/www/app
+    ports:
+      - "88:8080"
+    links:
+      - database
+
+  npm:
+    image: node:18.12.1-alpine
+    container_name: "${COMPOSE_PROJECT_NAME}-front"
+    working_dir: /var/www/app
+    volumes:
+      - .:/var/www/app
+    command: "sh -c 'npm install && npm run dev'"
+    ports:
+      - "5173:5173"
+    depends_on:
+      - app
+
+volumes:
+  dbdata: {}
