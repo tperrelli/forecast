@@ -24,6 +24,10 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 ## Running all test suite
 ```docker exec tiago-forecast-app ./vendor/bin/phpunit```
 
+### Notes
+
+1. All the users were added with a default password for testing purposes. See: UserFactory 
+
 ### Premium Partners
 
 - **[Vehikl](https://vehikl.com/)**
